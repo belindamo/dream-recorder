@@ -20,6 +20,9 @@ class RecordVC: UIViewController {
         print("back")
     }
     
-
+    @IBAction func recordPressed(_ sender: Any) {
+        performSegue(withIdentifier: "record2", sender: nil)
+    }
+    
 
 }

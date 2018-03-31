@@ -165,12 +165,14 @@ class HomeVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         ad.saveContext()
     }
     
-    
-    @IBAction func addPostBtn(_ sender: Any) {
-        print("create new post segue")
-        
+    @IBAction func addNewPostPressed(_ sender: Any) {
         performSegue(withIdentifier: "addNewPost", sender: nil)
         
+    }
+    
+    
+    @IBAction func toSettingsPressed(_ sender: Any) {
+        performSegue(withIdentifier: "settings", sender: nil)
     }
     
     

@@ -21,6 +21,10 @@ class EntryVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func editPressed(_ sender: Any) {
+        performSegue(withIdentifier: "editExistingEntry", sender: entryToView)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,20 +40,15 @@ class EntryVC: UIViewController {
         }
     }
     
-//    override func viewDidLayoutSubviews() {
-//
-//        super.viewDidLayoutSubviews()
-//        
-//        let sizeThatFitsTextView = content.sizeThatFits(CGSize(width: content.frame.size.width, height:10000000000.0))
-//        contentHeight.constant = sizeThatFitsTextView.height
-////
-////        let contentSize: CGSize = self.content.sizeThatFits(self.content.bounds.size)
-////        var frame = self.content.frame
-////        frame.size.height = contentSize.height
-////        self.content.frame = frame
-////
-////        let contentAspectRatio = NSLayoutConstraint(item: self.content, attribute: .height, relatedBy: .equal, toItem: self.content, attribute: .width, multiplier: content.bounds.height/content.bounds.width, constant: 1)
-////        self.content.addConstraint(contentAspectRatio)
-//        
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "editExistingEntry" {
+            if let destination = segue.destination as? EditVC {
+                if let entry = sender as? Entry {
+                    destination.entryToEdit = entry
+                }
+            }
+        }
+    }
+    
+
 }
